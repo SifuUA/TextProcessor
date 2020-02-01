@@ -10,11 +10,12 @@ public class ConsoleReader implements ReaderStrategy {
     public String readInput() {
         var input = "";
 
-        try (var reader = new BufferedReader(new InputStreamReader(System.in));) {
+        try (var reader = new BufferedReader(new InputStreamReader(System.in))) {
             input = reader.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return input;
     }
+
 }
