@@ -1,9 +1,12 @@
 import io.FileTextReader;
 import view.ConsoleReader;
+import view.FileReader;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
@@ -23,14 +26,27 @@ public class Main {
             var result = map(input);
             System.out.println(result);
         } else if (input.startsWith("filter") || input.startsWith("f")) {
-            filter(input);
+            filter(input).forEach(System.out::println);
         } else {
             System.out.println("Command not recognized.");
         }
     }
 
-    private static void filter(String input) {
+    private static List<String> filter(String input) {
+        String[] wordsArray = new FileReader()
+                .readInput()
+                .split("\\W+");
 
+
+        return Stream.of(wordsArray)
+                .filter(word -> word.contains(getClearInput(input)))
+                .collect(Collectors.toList());
+    }
+
+    private static String getClearInput(String input) {
+        return input.replace("filter", "")
+                .strip()
+                .toLowerCase();
     }
 
     private static Optional<String> map(String input) {
@@ -79,5 +95,4 @@ public class Main {
     private static boolean isLegalMapCommand(List<String> commandParts) {
         return commandParts.size() >= 1;
     }
-
 }
