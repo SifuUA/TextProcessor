@@ -1,5 +1,7 @@
 package reader;
 
 public interface ReaderStrategy {
-    String readInput();
+
+    String read();
+
 }
