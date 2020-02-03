@@ -19,7 +19,7 @@ public class SearchCommandProcessor implements CommandProcessor {
 
     @Override
     public Optional<String> process() {
-        return parameters.isEmpty() ? empty() : allSuperStringsFor(parameters.get(0));
+        return parameters.isEmpty() ? Optional.empty() : allSuperStringsFor(parameters.get(0));
     }
 
     private Optional<String> allSuperStringsFor(String enclosingWord) {
@@ -28,7 +28,7 @@ public class SearchCommandProcessor implements CommandProcessor {
                 .filter(word -> word.contains(enclosingWord))
                 .collect(Collectors.joining(SPACE));
 
-        return result.isBlank() ? of("No results") : of(result);
+        return result.isBlank() ? Optional.of("No results") : Optional.of(result);
     }
 
 }

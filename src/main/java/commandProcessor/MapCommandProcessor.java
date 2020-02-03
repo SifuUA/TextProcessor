@@ -33,9 +33,9 @@ public class MapCommandProcessor implements CommandProcessor {
                     .map(String::toUpperCase)
                     .collect(joining(SPACE));
 
-            return of(result);
+            return Optional.of(result);
         }
-        return of("Illegal flag passed");
+        return Optional.of("Illegal flag passed");
     }
 
     private Optional<String> mapByManyParameters(List<String> parameters) {
@@ -43,14 +43,19 @@ public class MapCommandProcessor implements CommandProcessor {
         var mapCriteria = parameters.get(1);
 
         if (mapCriteria.equals("up")) {
-            var result = Arrays.stream(String.join(SPACE, TEXT)
-                    .split(SPACE))
-                    .filter(NON_BLANK)
-                    .map(s -> s.equalsIgnoreCase(wordToMap) ? wordToMap.toUpperCase() : s)
-                    .collect(joining(SPACE));
-            return of(result);
+            return mapSubstringToUppercase(wordToMap);
         }
-        return of("Illegal flag passed");
+
+        return Optional.of("Illegal flag passed");
+    }
+
+    private Optional<String> mapSubstringToUppercase(String wordToMap) {
+        var result = Arrays.stream(String.join(SPACE, TEXT)
+                .split(SPACE))
+                .filter(NON_BLANK)
+                .map(s -> s.equalsIgnoreCase(wordToMap) ? wordToMap.toUpperCase() : s)
+                .collect(joining(SPACE));
+        return Optional.of(result);
     }
 
 }

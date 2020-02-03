@@ -10,9 +10,9 @@ public class Main {
         System.out.println("Enter command:");
         var input = consoleReader.read();
 
-        commandFactory.getCommand(input).process().ifPresent(System.out::println);
-//                .flatMap(command -> command.process(input))
-//                .ifPresentOrElse(System.out::println, () -> System.out.println("No results."));
+        commandFactory.getCommand(input)
+                .process()
+                .ifPresent(System.out::println);
     }
 
 }
