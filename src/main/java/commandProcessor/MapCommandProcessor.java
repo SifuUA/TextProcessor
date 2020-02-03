@@ -50,8 +50,7 @@ public class MapCommandProcessor implements CommandProcessor {
     }
 
     private Optional<String> mapSubstringToUppercase(String wordToMap) {
-        var result = Arrays.stream(String.join(SPACE, TEXT)
-                .split(SPACE))
+        var result = Arrays.stream(TEXT)
                 .filter(NON_BLANK)
                 .map(s -> s.equalsIgnoreCase(wordToMap) ? wordToMap.toUpperCase() : s)
                 .collect(joining(SPACE));
