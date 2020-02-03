@@ -1,21 +1,14 @@
 package reader;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class ConsoleReader implements ReaderStrategy {
 
-    @Override
-    public String readInput() {
-        var input = "";
+    private final Scanner scanner = new Scanner(System.in);
 
-        try (var reader = new BufferedReader(new InputStreamReader(System.in))) {
-            input = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return input;
+    @Override
+    public String read() {
+        return scanner.nextLine().strip();
     }
 
 }
