@@ -13,6 +13,7 @@ public enum Command {
 
     MAP(of("map", "m")),
     SEARCH(of("search", "s")),
+    COUNT(of("count", "c")),
 
     ILLEGAL(of());
 

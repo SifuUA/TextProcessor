@@ -20,6 +20,8 @@ public class CommandProcessorFactory {
                 return new MapCommandProcessor(parameters);
             case SEARCH:
                 return new SearchCommandProcessor(parameters);
+            case COUNT:
+                return new CountCommandProcessor(parameters);
             default:
                 return new IllegalCommandProcessor();
         }
