@@ -9,7 +9,7 @@ public final class Util {
     private Util() {
     }
 
-    public static Predicate<String> NON_BLANK = s -> !s.isBlank();
+    public static final Predicate<String> NON_BLANK = s -> !s.isBlank();
 
     public static final String SPACE = " ";
 

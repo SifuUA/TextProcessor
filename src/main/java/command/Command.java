@@ -4,18 +4,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-import static java.util.Set.of;
 import static java.util.stream.Collectors.toList;
 import static util.Util.NON_BLANK;
 import static util.Util.SPACE;
 
 public enum Command {
 
-    MAP(of("map", "m")),
-    SEARCH(of("search", "s")),
-    COUNT(of("count", "c")),
+    MAP(Set.of("map", "m")),
+    SEARCH(Set.of("search", "s")),
+    COUNT(Set.of("count", "c")),
 
-    ILLEGAL(of());
+    ILLEGAL(Set.of());
 
     final Set<String> codes;
 
